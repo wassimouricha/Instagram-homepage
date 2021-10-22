@@ -1,0 +1,410 @@
+/* Fonts = Police d'écritures  @font-face permet de choisir sa police d'écriture */
+@font-face{
+    font-family:"segoe";
+    src: url(/fonts/segoe-ui-regular.ttf) format("truetype") ;
+    font-weight: 400px;
+
+}
+
+@font-face{
+    font-family:"segoe";
+    src: url(/fonts/segoe-ui-bold.ttf) format("truetype");
+    font-weight: 700px;
+
+}
+
+/* variables = ici je crée mes propres propriétés qui peuvent contenir une valeur qui 
+pourra être réutilisée dans le document grâce à la fonction var*/
+
+:root{
+--background-color: #fafafa;
+--white: #ffffff;
+--border-color: 112,112,112;
+--placeholder-color:#837979;
+--or-text: #8e8e8e;
+--fb-logo: #385185;
+--log-in-button: #0095f6;
+--black:#262626;
+--footer-links:#1e4f7c;
+--copyright-gray:#bfbfbf;
+
+}
+
+/* overwrite brower default */
+/* box-sizing:border-box = definit la façon dont la hauteur et la largeur d'un élément est calculé ,
+border-box indique au navigateur de prendre en compte la bordure et le remplissage dans la valeur définie pour la largeur et la hauteur.
+Cela permet généralement de simplifier le dimensionnement des éléments.
+*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;  
+
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p{
+    font-weight: 400px;
+}
+
+/* text-decoration est utilisée pour « décorer » le texte en ajoutant une ligne pouvant être positionnée sous, sur ou à travers le texte. */
+a{
+    text-decoration: none;
+}
+/* list-style-type permet de définir l'apparence de la puce d'un élément de liste */
+ul{
+list-style-type: none;
+
+}
+
+html{
+    font-size: 62.5%;
+}
+
+body{
+    font-family: "segoe";
+    background: var(--background-color);
+}
+
+/* Connexion */
+
+/* log in container / display est une propriété et sa valeur flex indique que c'est un conteneur flexible
+ et flex-direction:column indique qu'il sera disposé en colonne*/
+
+.log-in{
+    background: var(--white);
+    width: 35rem;
+    height: 32.5rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 0.1rem solid rgba(var(--border-color),0.5);
+    padding: 1.5rem 4rem;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+
+}
+
+/* logo */
+
+.logo{
+width: 19rem;
+margin-bottom: 1rem;
+}
+
+/* log-in-form */
+
+.log-in-form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+/* style en commun pour les formulaires et le bouton de connexion */
+
+.log-in-form input,
+.log-in-button{
+    padding: 1rem 0 1rem 1rem;
+    border-radius: 0.5rem;
+
+}
+/* style en commun pour les formulaires et leurs placeholder */
+.log-in-form input,
+.log-in-form input::placeholder{
+    font-size: 1.1rem;
+    font-family: "segoe";
+}
+/* formulaire / La propriété outline est une propriété raccourcie qui permet de définir, dans une seule déclaration, 
+une ou plusieurs des propriétés parmi outline-style, outline-width et outline-color.*/
+.log-in-form input{
+    background: var(--background-color);
+    border: 0.1rem solid rgba(var(--border-color),0.5);
+    outline: none;
+}
+
+/* style pour le champ de texte du nom d'utilisateur [] indique que l'on va modifier le type="text" dans l'input de la class log-in-form */
+.log-in-form input[type="text"]{
+    margin-bottom: 0.5rem;
+
+}
+/* style des placeholder pour les formulaires  */
+.log-in-form input::placeholder {
+color: var(--placeholder-color);
+}
+
+/* style des champs de texte lorsqu'on passe dessus */
+.log-in-form input:focus{
+    border-color: var(--border-color)0.8;
+}
+
+/* bouton de connexion / cursor permet de changer l'icone du curseur lorsque l'on passe sur l'élément*/
+.log-in-button{
+    background: var(--log-in-button);
+    color: var(--white);
+    margin: 2rem 0;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
+
+/* ou division / La propriété position définit la façon dont un élément est positionné dans un document.
+position:relative Un élément positionné de façon relative est un élément dont la propriété de position calculée est relative. 
+Dans ce cas, les propriétés top ou bottom indiquent le décalage vertical à appliquer et left ou right indiquent le décalage horizontal. */
+.or-divider{
+    color: var(--or-text);
+    font-weight: 700;
+    position: relative;
+    font-size: 1.2rem;
+}
+
+.or-divider::before,
+.or-divider::after{
+    content: "";
+    display: block;
+    width: 11rem;
+    height: 0.1rem;
+    position: absolute;
+    background: rgba(var(--border-color),0.4);
+    top:50%
+}
+.or-divider::before{
+    left: 3rem;
+}
+
+.or-divider::after{
+    right: 3rem;
+}
+
+/* connexion avec facebook */
+.fb-login{
+    margin-top: 1.5rem 0;
+}
+
+.fb-login img,
+.fb-login span{
+    vertical-align: middle;
+}
+
+.fb-login img{
+    width: 1.5rem;
+    margin-right: 0.5rem;
+}
+
+.fb-login span{
+    font-size: 1.3rem;
+    color: var(--fb-logo);
+    font-weight: 700;
+}
+
+/* mot de passe oublié
+
+.forgot-password{
+    color: var(--fb-logo);
+    font-size: 1.2rem;
+}
+
+inscription
+/* Inscription container */
+
+.sign-up{
+
+    background: var(--white);
+    width: 35rem;
+    margin: 10px 0  ;
+    border: 0.1rem solid rgba(var(--border-color),0.5);
+    padding: 2rem;
+    text-align: center;
+    
+}
+
+/* pas de compte ? */
+.sign-up span{
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+}
+
+/* liens d'inscription */
+.sign-up a{
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--log-in-button);
+}
+
+/* telecharger l'application */
+/* telecharger l'application  container*/
+
+.get-the-app{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 35rem;
+    margin: 10px 0  ;
+    margin-top: 1.5rem;
+
+}
+
+/* telecharger l'application text */
+
+.get-the-app span{
+display: block;
+margin-bottom: 2rem;
+font-size: 1.4rem;
+
+}
+
+.app-image img{
+    width: 13rem;
+} 
+/* selectionner la première image */
+
+.app-image img:nth-child(1){
+    margin-right: 1rem;
+}
+
+/* téléphone */
+
+.phone-container{
+    display: none;
+}
+
+/* footer */
+
+footer{
+    width: 35rem;
+    display: flex;
+    justify-content: space-around;
+    margin: 4rem auto 0 auto;
+}
+
+/* liste sans ordre */
+
+.footer-links{
+    display: flex;
+    flex-wrap: wrap;
+    position: fixed;
+    bottom: 0;
+    justify-content: space-evenly;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    
+   
+}
+
+.footer-links li{
+    flex-basis: 13%;
+    text-align: center;
+}
+
+.footer-links a{
+    color: var(--footer-links);
+    font-weight: 700;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+.copyright{
+    text-align: center;
+    color: var(--copyright-gray);
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+/* slide */
+.slider{
+    display: none;
+}
+.slider-track{
+    display: none;}
+
+
+/* media queries */
+/* tablet */
+/* appliqué pour les écrans de minimum  876px */
+
+@media screen and (min-width: 876px ){
+    main{
+        display: flex;
+        justify-content: center;
+        padding-top: 3rem;
+    }
+
+.phone-container{
+    position: relative;
+    display: initial;
+}
+.slider{
+    position: absolute;
+    display: initial;
+    right: 65px;
+    top: 100px;
+    overflow: hidden;
+}
+.slider-track{
+  display: flex;
+  width: calc(160px*10);
+  animation: scroll 40% linear infinite;
+}
+
+@keyframes scroll {
+    0%
+    {
+        transform: translateX(0);
+    }
+    100%
+    {
+        transform: translateX(calc(160px*10));
+    }
+
+}
+.slide{
+
+    height: 470px;
+    width: 160px;
+}
+
+.log-in-container{
+    order: 1;
+}
+footer{
+    width: 100%;
+    justify-content: space-evenly;
+    padding-left: 4rem;
+    padding-bottom: 4rem;
+}
+.footer-links{
+    display: flex;
+    flex-wrap: wrap;
+    position: fixed;
+    bottom: 0;
+    justify-content: space-evenly;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.footer-links li {
+flex-basis: auto;
+margin-right: 1rem;
+
+}
+.footer-links a {
+    margin-bottom: 0;
+}
+.copyright{
+    text-align: left;
+}
+
+}
+/* bureau  */
+@media screen and (min-width:1527px){
+footer{
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+}
+
+}
